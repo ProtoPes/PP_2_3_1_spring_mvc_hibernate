@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<h1>Команда Enterprise</h1>
+
+<div>
+        <form th:method="GET" th:action="@{/new}">
+            <input type="submit" value="Добавить нового члена команды">
+        </form>
+</div>
+<br/>
+
+<div>
+    <table th:border="1">
+        <tr>
+            <th>Имя</th>
+            <th>Звание</th>
+            <th>Возраст</th>
+            <th>Редактировать</th>
+            <th>Удалить</th>
+        </tr>
+       <tr th:each="user : ${users}">
+           <td><a th:text="${user.getName()}" /></td>
+           <td><a th:text="${user.getPosition()}" /></td>
+           <td><a th:text="${user.getAge()}" /></td>
+           <td><a th:href="@{{id}/edit(id=${user.getId()})}">Редактировать</a></td>
+           <td><a th:href="@{{id}/delete(id=${user.getId()})}">Удалить</a></td>
+       </tr>
+    </table>
+</div>
+
+</body>
+</html>

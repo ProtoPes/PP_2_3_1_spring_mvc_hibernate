@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать члена команды</title>
+</head>
+<body>
+
+<h1>Редактировать члена команды</h1>
+
+<form th:method="PATCH" th:action="@{/edit}" th:object="${user}">
+    <input type="hidden" th:field="*{id}">
+    <label for="name">Имя: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="position">Должность: </label>
+    <input type="text" th:field="*{position}" id="position"/>
+    <br/>
+    <label for="age">Возраст: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br/>
+    <input type="submit" value="Готово"/>
+</form>
+
+</body>
+</html>
