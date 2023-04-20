@@ -10,6 +10,7 @@ import web.entities.User;
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
@@ -25,7 +26,6 @@ public class UserServiceImpl implements UserService {
         userDao.add(user);
     }
 
-    @Transactional
     @Override
     public List<User> getAll() {
         return userDao.getAll();
@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
         userDao.update(user);
     }
 
-    @Transactional
     @Override
     public User get(long id) {
         return userDao.get(id);

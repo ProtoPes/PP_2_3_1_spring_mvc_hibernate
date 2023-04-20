@@ -16,20 +16,28 @@
 <br/>
 
 <div>
-    <table th:border="1">
+    <table th:border="1" th:cellpadding="10">
         <tr>
             <th>Имя</th>
             <th>Звание</th>
             <th>Возраст</th>
-            <th>Редактировать</th>
-            <th>Удалить</th>
+            <th></th>
+            <th></th>
         </tr>
        <tr th:each="user : ${users}">
            <td><a th:text="${user.getName()}" /></td>
            <td><a th:text="${user.getPosition()}" /></td>
            <td><a th:text="${user.getAge()}" /></td>
-           <td><a th:href="@{{id}/edit(id=${user.getId()})}">Редактировать</a></td>
-           <td><a th:href="@{{id}/delete(id=${user.getId()})}">Удалить</a></td>
+           <td>
+               <form th:method="GET" th:action="@{{id}/edit(id=${user.getId()})}">
+                   <input type="submit" value="Редактировать">
+               </form>
+           </td>
+           <td>
+               <form th:method="DELETE" th:action="@{{id}/delete(id=${user.getId()})}">
+                   <input type="submit" value="Удалить">
+               </form>
+           </td>
        </tr>
     </table>
 </div>
